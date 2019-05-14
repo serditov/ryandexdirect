@@ -1,7 +1,7 @@
 yadirGetToken <-
 function(Login = NULL, TokenPath = getwd()){
   # open browser
-  browseURL("https://oauth.yandex.ru/authorize?response_type=token&client_id=365a2d0a675c462d90ac145d4f5948cc")
+  browseURL("https://oauth.yandex.ru/authorize?response_type=token&client_id=819b3e20723647708f95abd061f6515c")
   
   # create list
   token <- list(token_type    = "bearer",
