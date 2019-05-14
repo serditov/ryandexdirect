@@ -16,8 +16,8 @@ yadirAuth <- function(Login = NULL, NewUser = FALSE, TokenPath = getwd()) {
       message("Auto refresh token")
       token_raw  <- httr::POST("https://oauth.yandex.ru/token", body = list(grant_type="refresh_token", 
                                                                             refresh_token = token$refresh_token,
-                                                                            client_id = "365a2d0a675c462d90ac145d4f5948cc",
-                                                                            client_secret = "f2074f4c312449fab9681942edaa5360"), encode = "form")
+                                                                            client_id = "819b3e20723647708f95abd061f6515c",
+                                                                            client_secret = "ce1334c11bbe453c86f6e8340ba25710"), encode = "form")
       # check for error
       if (!is.null(token$error_description)) {
         stop(paste0(token$error, ": ", token$error_description))
@@ -44,7 +44,7 @@ yadirAuth <- function(Login = NULL, NewUser = FALSE, TokenPath = getwd()) {
     stop(paste0("Function yadirAuth does not find the ", Login, ".yadirAuth.RData file in ",TokenPath,". You must run this script in interactive mode in RStudio or RGui and go through the authorization process for create ", Login,".yadirAuth.RData file, and using him between R session in batch mode. For more details see realise https://github.com/selesnow/ryandexdirect/releases/tag/3.0.0. For more details about R modes see https://www.r-bloggers.com/batch-processing-vs-interactive-sessions/") )
   } else {
     # if file not find
-    browseURL(paste0("https://oauth.yandex.ru/authorize?response_type=code&client_id=365a2d0a675c462d90ac145d4f5948cc&redirect_uri=https://selesnow.github.io/ryandexdirect/getToken/get_code.html&force_confirm=", as.integer(NewUser), ifelse(is.null(Login), "", paste0("&login_hint=", Login))))
+    browseURL(paste0("https://oauth.yandex.ru/authorize?response_type=code&client_id=819b3e20723647708f95abd061f6515c&redirect_uri=https://selesnow.github.io/ryandexdirect/getToken/get_code.html&force_confirm=", as.integer(NewUser), ifelse(is.null(Login), "", paste0("&login_hint=", Login))))
     # enter code
     temp_code <- readline(prompt = "Enter authorize code:")
     
@@ -57,8 +57,8 @@ yadirAuth <- function(Login = NULL, NewUser = FALSE, TokenPath = getwd()) {
   
   token_raw <- httr::POST("https://oauth.yandex.ru/token", body = list(grant_type="authorization_code", 
                                                                        code = temp_code, 
-                                                                       client_id = "365a2d0a675c462d90ac145d4f5948cc", 
-                                                                       client_secret = "f2074f4c312449fab9681942edaa5360"), encode = "form")
+                                                                       client_id = "819b3e20723647708f95abd061f6515c", 
+                                                                       client_secret = "ce1334c11bbe453c86f6e8340ba25710"), encode = "form")
   # parse token
   token <- content(token_raw)
   token$expire_at <- Sys.time() + as.numeric(token$expires_in, units = "secs")
