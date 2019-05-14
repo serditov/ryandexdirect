@@ -41,10 +41,10 @@ yadirAuth <- function(Login = NULL, NewUser = FALSE, TokenPath = getwd()) {
   
   # check session mode
   if ( ! interactive() ) {
-    stop(paste0("Function yadirAuth does not find the ", Login, ".yadirAuth.RData file in ",TokenPath,". You must run this script in interactive mode in RStudio or RGui and go through the authorization process for create ", Login,".yadirAuth.RData file, and using him between R session in batch mode. For more details see realise https://github.com/selesnow/ryandexdirect/releases/tag/3.0.0. For more details about R modes see https://www.r-bloggers.com/batch-processing-vs-interactive-sessions/") )
+    stop(paste0("Function yadirAuth does not find the ", Login, ".yadirAuth.RData file in ",TokenPath,". You must run this script in interactive mode in RStudio or RGui and go through the authorization process for create ", Login,".yadirAuth.RData file, and using him between R session in batch mode. For more details see realise https://github.com/serditov/ryandexdirect/releases/tag/3.0.0. For more details about R modes see https://www.r-bloggers.com/batch-processing-vs-interactive-sessions/") )
   } else {
     # if file not find
-    browseURL(paste0("https://oauth.yandex.ru/authorize?response_type=code&client_id=819b3e20723647708f95abd061f6515c&redirect_uri=https://selesnow.github.io/ryandexdirect/getToken/get_code.html&force_confirm=", as.integer(NewUser), ifelse(is.null(Login), "", paste0("&login_hint=", Login))))
+    browseURL(paste0("https://oauth.yandex.ru/authorize?response_type=code&client_id=819b3e20723647708f95abd061f6515c&redirect_uri=https://serditov.github.io/ryandexdirect/getToken/get_code.html&force_confirm=", as.integer(NewUser), ifelse(is.null(Login), "", paste0("&login_hint=", Login))))
     # enter code
     temp_code <- readline(prompt = "Enter authorize code:")
     
