@@ -53,7 +53,7 @@ If several attribution models are specified, the data will be displayed for each
 
 \href{https://yandex.ru/support/direct/statistics/attribution-model.html}{What are attribution models?}
 
-\href{https://selesnow.github.io/ryandexdirect/}{Docs on ryandexdirect website}
+\href{https://serditov.github.io/ryandexdirect/}{Docs on ryandexdirect website}
 }
 
 \value{Data frame with the requested fields}
